@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Shooters of India</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>@view-transition { navigation: auto; }</style>
+</head>
+<body class="h-full bg-gray-50">
+    <div class="min-h-screen py-8 px-4">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div class="mb-8">
+                <button onclick="goBack()" class="mb-4 px-4 py-2 rounded-lg btn-secondary font-medium text-sm">
+                    <i class="fas fa-arrow-left mr-2"></i>Back to Cart
+                </button>
+                <h1 class="text-3xl font-bold text-gray-900">Checkout</h1>
+                <p class="text-gray-600 mt-2">Complete your order by filling out the information below.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Order Summary -->
+                <div class="glass-card rounded-2xl p-6 shadow-xl">
+                    <h2 class="text-xl font-bold mb-6 text-gray-900">Order Summary</h2>
+
+                    <!-- Cart Items -->
+                    <div id="checkout-cart-items" class="space-y-4 mb-6">
+                        <!-- Cart items will be populated here -->
+                    </div>
+
+                    <!-- Order Total -->
+                    <div class="border-t pt-4 border-gray-200">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-base font-medium text-gray-700">Subtotal:</span>
+                            <span id="checkout-subtotal" class="text-lg font-semibold text-gray-900">₹0</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-base font-medium text-gray-700">Shipping:</span>
+                            <span class="text-lg font-semibold text-green-600">FREE</span>
+                        </div>
+                        <div class="flex justify-between items-center pt-2 border-t border-gray-200">
+                            <span class="text-xl font-bold text-gray-900">Total:</span>
+                            <span id="checkout-total" class="text-2xl font-bold text-gray-900">₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Checkout Form -->
+                <div class="glass-card rounded-2xl p-6 shadow-xl">
+                    <h2 class="text-xl font-bold mb-6 text-gray-900">Shipping Information</h2>
+
+                    <form id="checkout-form" class="space-y-6">
+                        <!-- Name -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                                Full Name <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="name" name="name" required
+                                   class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                                   placeholder="Enter your full name">
+                        </div>
+
+                        <!-- Mobile Number -->
+                        <div>
+                            <label for="mobile" class="block text-sm font-medium text-gray-700 mb-2">
+                                Mobile Number <span class="text-red-500">*</span>
+                            </label>
+                            <input type="tel" id="mobile" name="mobile" required
+                                   class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                                   placeholder="Enter your mobile number">
+                        </div>
+
+                        <!-- Alternate Number -->
+                        <div>
+                            <label for="alternate-mobile" class="block text-sm font-medium text-gray-700 mb-2">
+                                Alternate Mobile Number <span class="text-gray-500">(Optional)</span>
+                            </label>
+                            <input type="tel" id="alternate-mobile" name="alternate-mobile"
+                                   class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                                   placeholder="Enter alternate mobile number">
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                                Email Address <span class="text-gray-500">(Optional)</span>
+                            </label>
+                            <input type="email" id="email" name="email"
+                                   class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                                   placeholder="Enter your email address">
+                        </div>
+
+                        <!-- Address Line 1 -->
+                        <div>
+                            <label for="address-line-1" class="block text-sm font-medium text-gray-700 mb-2">
+                                Address Line 1 <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="address-line-1" name="address-line-1" required
+                                   class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                                   placeholder="Street address, building, apartment">
+                        </div>
+
+                        <!-- Address Line 2 -->
+                        <div>
+                            <label for="address-line-2" class="block text-sm font-medium text-gray-700 mb-2">
+                                Address Line 2 <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="address-line-2" name="address-line-2" required
+                                   class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                                   placeholder="Area, locality, landmark">
+                        </div>
+
+                        <!-- Special Requirements -->
+                        <div>
+                            <label for="special-request" class="block text-sm font-medium text-gray-700 mb-2">
+                                Special Requirements <span class="text-gray-500">(Optional)</span>
+                            </label>
+                            <textarea id="special-request" name="special-request" rows="3"
+                                      class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all resize-none"
+                                      placeholder="Any special delivery instructions or requirements"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full btn-primary py-3 rounded-lg font-bold text-sm transition-all hover:scale-105">
+                            <i class="fas fa-credit-card mr-2"></i>Place Order
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize EmailJS
+        emailjs.init('_wpSw90HxbiAnv9_k');
+
+        // Load cart data and populate checkout
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCart();
+            populateCheckout();
+        });
+
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+
+        function populateCheckout() {
+            const cartItemsContainer = document.getElementById('checkout-cart-items');
+            const subtotalElement = document.getElementById('checkout-subtotal');
+            const totalElement = document.getElementById('checkout-total');
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-center py-8 text-gray-500">Your cart is empty</p>';
+                subtotalElement.textContent = '₹0';
+                totalElement.textContent = '₹0';
+                return;
+            }
+
+            let subtotal = 0;
+            const itemsHTML = cart.map(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                return `
+                    <div class="flex items-center gap-4 p-4 rounded-lg bg-gray-50">
+                        <div class="w-12 h-12 flex items-center justify-center flex-shrink-0">
+                            ${getProductIcon(item.image)}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-semibold text-sm text-gray-900 truncate">${item.name}</h4>
+                            <p class="text-sm text-gray-600">₹${item.price} × ${item.quantity}</p>
+                        </div>
+                        <div class="font-semibold text-gray-900">
+                            ₹${itemTotal}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            cartItemsContainer.innerHTML = itemsHTML;
+            subtotalElement.textContent = `₹${subtotal}`;
+            totalElement.textContent = `₹${subtotal}`;
+        }
+
+        // Handle checkout form submission
+        document.getElementById('checkout-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Processing...';
+
+            // Prepare cart items summary
+            const cartItemsSummary = cart.map(item =>
+                `${item.name} (₹${item.price}) × ${item.quantity} = ₹${item.price * item.quantity}`
+            ).join('\n');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            // Prepare form data
+            const formData = {
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value || 'Not provided',
+                mobile_number: document.getElementById('mobile').value,
+                alternate_number: document.getElementById('alternate-mobile').value || 'Not provided',
+                address_line_1: document.getElementById('address-line-1').value,
+                address_line_2: document.getElementById('address-line-2').value,
+                special_request: document.getElementById('special-request').value || 'None',
+                cart_items: cartItemsSummary,
+                total_items: totalItems.toString(),
+                total_amount: `₹${totalAmount}`
+            };
+
+            // Send email using EmailJS
+            try {
+                emailjs.send('service_q4faube', 'template_r47pzqg', formData)
+                    .then(function(response) {
+                        // Clear cart and redirect
+                        cart = [];
+                        saveCart();
+
+                        // Show success message and redirect
+                        alert('Order placed successfully! You will receive a confirmation email shortly.');
+                        window.location.href = 'index.html';
+                    }, function(error) {
+                        console.error('EmailJS error:', error);
+                        alert('Failed to place order. Please try again.');
+                        // Re-enable button
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalText;
+                    });
+            } catch (error) {
+                console.error('Network error:', error);
+                alert('Network error. Please check your connection and try again.');
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+            }
+        });
+    </script>
+</body>
+</html>
