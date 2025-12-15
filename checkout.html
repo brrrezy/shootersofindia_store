@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - Shooters of India</title>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +43,7 @@
                         </div>
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-base font-medium text-gray-700">Shipping:</span>
-                            <span class="text-lg font-semibold text-green-600">FREE</span>
+                            <span id="checkout-shipping" class="text-lg font-semibold text-gray-900">₹0</span>
                         </div>
                         <div class="flex justify-between items-center pt-2 border-t border-gray-200">
                             <span class="text-xl font-bold text-gray-900">Total:</span>
@@ -139,11 +139,16 @@
 
     <script src="script.js"></script>
     <script>
-        // Initialize EmailJS
-        emailjs.init('_wpSw90HxbiAnv9_k');
-
-        // Load cart data and populate checkout
+        // Load cart data, init EmailJS, and populate checkout
         document.addEventListener('DOMContentLoaded', function() {
+            try {
+                if (window.emailjs) {
+                    emailjs.init('_wpSw90HxbiAnv9_k');
+                }
+            } catch (e) {
+                console.error('EmailJS init error:', e);
+            }
+
             loadCart();
             populateCheckout();
         });
@@ -156,11 +161,17 @@
             const cartItemsContainer = document.getElementById('checkout-cart-items');
             const subtotalElement = document.getElementById('checkout-subtotal');
             const totalElement = document.getElementById('checkout-total');
+        const shippingElement = document.getElementById('checkout-shipping');
 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p class="text-center py-8 text-gray-500">Your cart is empty</p>';
                 subtotalElement.textContent = '₹0';
-                totalElement.textContent = '₹0';
+          if (shippingElement) {
+            shippingElement.textContent = '₹0';
+            shippingElement.classList.remove('text-green-600');
+            shippingElement.classList.add('text-gray-900');
+          }
+          totalElement.textContent = '₹0';
                 return;
             }
 
@@ -186,8 +197,27 @@
             }).join('');
 
             cartItemsContainer.innerHTML = itemsHTML;
-            subtotalElement.textContent = `₹${subtotal}`;
-            totalElement.textContent = `₹${subtotal}`;
+        subtotalElement.textContent = `₹${subtotal}`;
+
+        // Shipping: ₹0 if subtotal >= 999, else ₹99
+        let shipping = 0;
+        if (subtotal > 0 && subtotal < 999) {
+          shipping = 99;
+        }
+
+        if (shippingElement) {
+          if (shipping === 0) {
+            shippingElement.textContent = 'FREE';
+            shippingElement.classList.remove('text-gray-900');
+            shippingElement.classList.add('text-green-600');
+          } else {
+            shippingElement.textContent = `₹${shipping}`;
+            shippingElement.classList.remove('text-green-600');
+            shippingElement.classList.add('text-gray-900');
+          }
+        }
+
+        totalElement.textContent = `₹${subtotal + shipping}`;
         }
 
         // Handle checkout form submission
@@ -207,7 +237,9 @@
             ).join('\n');
 
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal > 0 && subtotal < 999 ? 99 : 0;
+            const totalAmount = subtotal + shipping;
 
             // Prepare form data
             const formData = {

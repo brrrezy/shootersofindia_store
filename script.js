@@ -519,7 +519,7 @@ function openProductDetail(productId){
           </div>
           <p class="text-xs opacity-60 flex items-center gap-2" style="color: ${textColor};">
             <i class="fas fa-truck" style="color: ${primaryColor};"></i>
-            Free shipping on orders above ₹999
+            Shipping: ₹99 on orders below ₹999, free above.
           </p>
         </div>
 
