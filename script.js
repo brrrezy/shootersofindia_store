@@ -319,15 +319,23 @@ async function onConfigChange(config){
   contactDescription.style.fontSize = `${baseSize * 1}px`;
 
   const emailText = document.getElementById('email-text');
-  emailText.textContent = config.email_address || defaultConfig.email_address;
+  if (emailText) {
+    emailText.textContent = config.email_address || defaultConfig.email_address;
+  }
   const emailLink = document.getElementById('email-link');
-  emailLink.href = `mailto:${config.email_address || defaultConfig.email_address}`;
+  if (emailLink) {
+    emailLink.href = `mailto:${config.email_address || defaultConfig.email_address}`;
+  }
 
   const instagramText = document.getElementById('instagram-text');
-  instagramText.textContent = config.instagram_handle || defaultConfig.instagram_handle;
+  if (instagramText) {
+    instagramText.textContent = config.instagram_handle || defaultConfig.instagram_handle;
+  }
 
   const youtubeText = document.getElementById('youtube-text');
-  youtubeText.textContent = config.youtube_channel || defaultConfig.youtube_channel;
+  if (youtubeText) {
+    youtubeText.textContent = config.youtube_channel || defaultConfig.youtube_channel;
+  }
 
   renderFeaturedProducts();
   renderSaleProducts();
