@@ -1,0 +1,11 @@
+# Robots.txt for Shooters of India
+# https://shootersofindia.vercel.app
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://shootersofindia.vercel.app/sitemap.xml
+
+# Crawl-delay (optional, be nice to servers)
+Crawl-delay: 1
