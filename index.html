@@ -20,15 +20,15 @@
    <nav id="navbar" class="glass-navbar w-full sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="flex justify-between items-center h-16">
-      <div class="flex items-center space-x-2">
+      <button onclick="showPage('home')" class="flex items-center space-x-2 cursor-pointer hover:opacity-90 transition-opacity" aria-label="Go to Home page">
        <div id="logo" class="w-32 h-9 rounded-lg overflow-hidden shadow-lg">
         <img src="soi_logo.png" alt="Shooters of India Logo" class="w-full h-full object-cover">
        </div>
-       <div>
+       <div class="text-left">
         <h1 id="site-name" class="text-lg sm:text-xl font-bold tracking-tight">a</h1>
         <p id="tagline" class="text-[11px] sm:text-xs opacity-70"></p>
        </div>
-      </div>
+      </button>
       <div class="flex items-center gap-2 md:gap-4">
        <button onclick="showPage('home')" class="hidden md:inline-flex nav-link hover:opacity-80 transition-opacity font-medium text-xs" aria-label="Go to Home page">Home</button>
        <button onclick="showPage('shop')" class="hidden md:inline-flex nav-link hover:opacity-80 transition-opacity font-medium text-xs" aria-label="Go to Shop page">Shop</button>
