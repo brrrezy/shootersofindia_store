@@ -706,7 +706,7 @@ function checkout() {
   }
 
   // Redirect to checkout page
-  window.location.href = 'checkout.html';
+  window.location.href = '/checkout.html';
 }
 
 // ==================== NAVIGATION ====================
