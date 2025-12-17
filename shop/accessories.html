@@ -33,8 +33,60 @@
     "name": "Shooting Accessories",
     "description": "Premium accessories for competitive shooters including bookmarks and calendars",
     "itemListElement": [
-      {"@type": "Product", "name": "Shooter's Bookmark", "offers": {"@type": "Offer", "price": "99", "priceCurrency": "INR"}},
-      {"@type": "Product", "name": "Shooter's Calendar", "offers": {"@type": "Offer", "price": "299", "priceCurrency": "INR"}}
+      {
+        "@type": "Product",
+        "position": 1,
+        "name": "Shooter's Bookmark",
+        "description": "Minimal sports-themed bookmark for planners and books",
+        "image": "https://shootersofindia.vercel.app/assets/images/bookmark_1.jpg",
+        "brand": {"@type": "Brand", "name": "Shooters of India"},
+        "offers": {
+          "@type": "Offer",
+          "price": "99",
+          "priceCurrency": "INR",
+          "priceValidUntil": "2026-12-31",
+          "availability": "https://schema.org/InStock",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "99",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      },
+      {
+        "@type": "Product",
+        "position": 2,
+        "name": "Shooter's Calendar",
+        "description": "Yearly wall/desk calendar focused on training visibility",
+        "image": "https://shootersofindia.vercel.app/assets/images/calendar_1.jpg",
+        "brand": {"@type": "Brand", "name": "Shooters of India"},
+        "offers": {
+          "@type": "Offer",
+          "price": "299",
+          "priceCurrency": "INR",
+          "priceValidUntil": "2026-12-31",
+          "availability": "https://schema.org/InStock",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "99",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
     ]
   }
   </script>

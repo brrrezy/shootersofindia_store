@@ -66,10 +66,45 @@
     "url": "https://shootersofindia.vercel.app",
     "description": "India's leading online store for competitive shooting accessories including planners, scoresheets, and training tools",
     "priceRange": "₹99 - ₹1499",
-    "image": "https://shootersofindia.vercel.app/soi_logo.png",
+    "image": "https://shootersofindia.vercel.app/assets/images/soi_logo.png",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "IN"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "99",
+        "currency": "INR"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "IN"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 5,
+          "unitCode": "DAY"
+        }
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "IN",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnEasyReturn",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -79,12 +114,25 @@
           "@type": "Product",
           "name": "Shooting Premium Planner",
           "description": "12-month training planner for competitive shooters",
+          "image": "https://shootersofindia.vercel.app/assets/images/planner_1.jpg",
           "offers": {
             "@type": "Offer",
             "price": "999",
             "priceCurrency": "INR",
             "priceValidUntil": "2026-12-31",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "INR"
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+              }
+            }
           },
           "aggregateRating": {
             "@type": "AggregateRating",
@@ -96,12 +144,25 @@
           "@type": "Product",
           "name": "Shooter's Scoresheet",
           "description": "Professional score tracking sheets",
+          "image": "https://shootersofindia.vercel.app/assets/images/scoresheet_1.jpg",
           "offers": {
             "@type": "Offer",
             "price": "299",
             "priceCurrency": "INR",
             "priceValidUntil": "2026-12-31",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "99",
+                "currency": "INR"
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+              }
+            }
           },
           "aggregateRating": {
             "@type": "AggregateRating",

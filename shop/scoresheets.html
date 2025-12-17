@@ -33,19 +33,51 @@
     "name": "Shooter's Scoresheet",
     "description": "Professional score tracking sheets for competitive shooters.",
     "brand": {"@type": "Brand", "name": "Shooters of India"},
+    "image": [
+      "https://shootersofindia.vercel.app/assets/images/scoresheet_1.jpg",
+      "https://shootersofindia.vercel.app/assets/images/scoresheet_2.jpg",
+      "https://shootersofindia.vercel.app/assets/images/scoresheet_3.jpg",
+      "https://shootersofindia.vercel.app/assets/images/scoresheet_4.jpg"
+    ],
     "offers": {
       "@type": "Offer",
       "price": "299",
       "priceCurrency": "INR",
       "priceValidUntil": "2026-12-31",
-      "availability": "https://schema.org/InStock"
+      "availability": "https://schema.org/InStock",
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "99",
+          "currency": "INR"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "IN"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 2,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 2,
+            "maxValue": 5,
+            "unitCode": "DAY"
+          }
+        }
+      }
     },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
       "reviewCount": "31"
-    },
-    "image": "https://shootersofindia.vercel.app/assets/images/scoresheet_1.jpg"
+    }
   }
   </script>
 </head>
