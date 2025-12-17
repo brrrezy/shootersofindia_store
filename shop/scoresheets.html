@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Shooting Scoresheets & Score Tracking | Shooters of India</title>
+  <meta name="description" content="Professional shooting scoresheets for competitive shooters in India. Track match scores, practice sessions, and analyze performance patterns. Perfect for ISSF events.">
+  <meta name="keywords" content="shooting scoresheet, score tracking sheet, air rifle scoresheet, pistol shooting score card, ISSF score sheet, shooting practice log">
+  <meta name="author" content="Shooters of India">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://shootersofindia.vercel.app/shop/scoresheets.html">
+  
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://shootersofindia.vercel.app/shop/scoresheets.html">
+  <meta property="og:title" content="Shooting Scoresheets & Score Tracking | Shooters of India">
+  <meta property="og:description" content="Professional shooting scoresheets for competitive shooters.">
+  <meta property="og:image" content="https://shootersofindia.vercel.app/assets/images/scoresheet_1.jpg">
+  
+  <link rel="icon" type="image/png" href="../assets/images/soi_favicon.png">
+  <link rel="apple-touch-icon" href="../assets/images/soi_favicon.png">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Shooter's Scoresheet",
+    "description": "Professional score tracking sheets for competitive shooters.",
+    "brand": {"@type": "Brand", "name": "Shooters of India"},
+    "offers": {
+      "@type": "Offer",
+      "price": "299",
+      "priceCurrency": "INR",
+      "priceValidUntil": "2026-12-31",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "31"
+    },
+    "image": "https://shootersofindia.vercel.app/assets/images/scoresheet_1.jpg"
+  }
+  </script>
+</head>
+<body class="h-full">
+  <div id="app" class="w-full h-full overflow-auto">
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="glass-navbar w-full sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="../index.html" class="cursor-pointer hover:opacity-90 transition-opacity" aria-label="Go to Home page">
+            <div id="logo" class="w-32 h-9 rounded-lg overflow-hidden shadow-lg">
+              <img src="../assets/images/soi_logo.png" alt="Shooters of India Logo" class="w-full h-full object-cover">
+            </div>
+          </a>
+          <div class="flex items-center gap-2 md:gap-4">
+            <a href="../index.html" class="hidden md:inline-flex nav-link hover:opacity-80 transition-opacity font-medium text-xs" aria-label="Go to Home page">Home</a>
+            <a href="../shop.html" class="hidden md:inline-flex nav-link hover:opacity-80 transition-opacity font-medium text-xs" aria-label="Go to Shop page" style="color: #F06607;">Shop</a>
+            <a href="../contact.html" class="hidden md:inline-flex nav-link hover:opacity-80 transition-opacity font-medium text-xs" aria-label="Go to Contact page">Contact</a>
+            <button onclick="toggleCart()" class="relative btn-primary px-4 py-2 rounded-lg font-medium text-xs" aria-label="Toggle shopping cart">
+              <i class="fas fa-shopping-cart mr-1"></i>
+              Cart
+              <span id="cart-count" class="cart-badge absolute -top-1 -right-1 w-5 h-5 rounded-full text-[11px] flex items-center justify-center font-bold" aria-label="Items in cart">0</span>
+            </button>
+            <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center md:hidden ml-1 p-2 rounded-lg hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent focus-visible:ring-orange-400" aria-label="Toggle navigation menu">
+              <span class="sr-only">Open main menu</span>
+              <i class="fas fa-bars text-sm"></i>
+            </button>
+          </div>
+        </div>
+        <div id="mobile-nav" class="md:hidden pb-3 space-y-2 hidden">
+          <div class="flex flex-col gap-2 pt-2">
+            <a href="../index.html" class="nav-link text-left w-full px-3 py-2 rounded-lg hover:bg-white/5 font-medium text-sm">Home</a>
+            <a href="../shop.html" class="nav-link text-left w-full px-3 py-2 rounded-lg hover:bg-white/5 font-medium text-sm">Shop</a>
+            <a href="../contact.html" class="nav-link text-left w-full px-3 py-2 rounded-lg hover:bg-white/5 font-medium text-sm">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="w-full">
+      <!-- Breadcrumb -->
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <nav class="flex items-center gap-2 text-sm opacity-70 mb-6">
+          <a href="../index.html" class="hover:opacity-100">Home</a>
+          <span>/</span>
+          <a href="../shop.html" class="hover:opacity-100">Shop</a>
+          <span>/</span>
+          <span class="font-semibold" style="color: #F06607;">Scoresheets</span>
+        </nav>
+      </div>
+
+      <!-- Product Hero Section -->
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <!-- Image Gallery -->
+          <div class="space-y-4">
+            <div class="glass-card rounded-2xl overflow-hidden aspect-square">
+              <img id="main-product-image" src="../assets/images/scoresheet_1.jpg" alt="Shooter's Scoresheet" class="w-full h-full object-cover">
+            </div>
+            <div class="grid grid-cols-4 gap-3">
+              <button onclick="switchMainImage('../assets/images/scoresheet_1.jpg')" class="thumb-btn active glass-light rounded-lg overflow-hidden aspect-square border-2 border-transparent hover:border-orange-500 transition-all">
+                <img src="../assets/images/scoresheet_1.jpg" alt="Scoresheet view 1" class="w-full h-full object-cover">
+              </button>
+              <button onclick="switchMainImage('../assets/images/scoresheet_2.jpg')" class="thumb-btn glass-light rounded-lg overflow-hidden aspect-square border-2 border-transparent hover:border-orange-500 transition-all">
+                <img src="../assets/images/scoresheet_2.jpg" alt="Scoresheet view 2" class="w-full h-full object-cover">
+              </button>
+              <button onclick="switchMainImage('../assets/images/scoresheet_3.jpg')" class="thumb-btn glass-light rounded-lg overflow-hidden aspect-square border-2 border-transparent hover:border-orange-500 transition-all">
+                <img src="../assets/images/scoresheet_3.jpg" alt="Scoresheet view 3" class="w-full h-full object-cover">
+              </button>
+              <button onclick="switchMainImage('../assets/images/scoresheet_4.jpg')" class="thumb-btn glass-light rounded-lg overflow-hidden aspect-square border-2 border-transparent hover:border-orange-500 transition-all">
+                <img src="../assets/images/scoresheet_4.jpg" alt="Scoresheet view 4" class="w-full h-full object-cover">
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Info -->
+          <div class="flex flex-col">
+            <div class="mb-2">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold" style="background-color: rgba(240, 102, 7, 0.15); color: #F06607;">COACH APPROVED</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-bold mb-3">Shooter's Scoresheet</h1>
+            <p class="text-base opacity-80 mb-6 leading-relaxed">Accurate score tracking sheets for matches and practice. Clear scoring grids with space for series totals and session notes.</p>
+            
+            <!-- Price -->
+            <div class="flex items-baseline gap-3 mb-6">
+              <span class="text-4xl font-bold">₹299</span>
+              <span class="text-xl line-through opacity-50">₹499</span>
+              <span class="px-2 py-1 rounded text-xs font-bold" style="background-color: #F06607; color: #050C26;">SAVE 40%</span>
+            </div>
+
+            <!-- Features -->
+            <div class="space-y-3 mb-8">
+              <div class="flex items-start gap-3">
+                <i class="fas fa-check-circle mt-0.5" style="color: #F06607;"></i>
+                <span class="text-sm opacity-90">ISSF‑inspired layout for 10m, 25m, and 50m events</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fas fa-check-circle mt-0.5" style="color: #F06607;"></i>
+                <span class="text-sm opacity-90">Room for series totals, conditions, and post‑session notes</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fas fa-check-circle mt-0.5" style="color: #F06607;"></i>
+                <span class="text-sm opacity-90">Clear scoring grids for easy data entry</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fas fa-check-circle mt-0.5" style="color: #F06607;"></i>
+                <span class="text-sm opacity-90">Perfect for academies and coaches tracking multiple shooters</span>
+              </div>
+            </div>
+
+            <!-- Add to Cart -->
+            <div class="space-y-3 mb-8">
+              <button onclick="addToCart(2); showNotification('Added to cart!', 'success');" class="w-full btn-primary py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart — ₹299
+              </button>
+              <button onclick="addToCart(2); toggleCart();" class="w-full py-4 rounded-xl font-bold text-base border-2 hover:bg-white/5 transition-all" style="border-color: #F06607; color: #F06607;">
+                Buy Now
+              </button>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="grid grid-cols-3 gap-4 pt-6 border-t" style="border-color: rgba(240, 102, 7, 0.2);">
+              <div class="text-center">
+                <i class="fas fa-truck text-lg mb-1" style="color: #F06607;"></i>
+                <p class="text-xs opacity-70">Free Shipping<br>above ₹999</p>
+              </div>
+              <div class="text-center">
+                <i class="fas fa-shield-alt text-lg mb-1" style="color: #F06607;"></i>
+                <p class="text-xs opacity-70">Secure<br>Payment</p>
+              </div>
+              <div class="text-center">
+                <i class="fas fa-undo text-lg mb-1" style="color: #F06607;"></i>
+                <p class="text-xs opacity-70">Easy<br>Returns</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Details -->
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div class="glass-card rounded-2xl p-6 sm:p-8">
+          <h2 class="text-2xl font-bold mb-6">Track Every Shot, Improve Every Session</h2>
+          <div class="prose prose-invert max-w-none opacity-90 leading-relaxed space-y-4">
+            <p>In precision shooting sports, data is everything. Our <strong>Shooter's Scoresheets</strong> give you the tools to track every series, record environmental conditions, and analyze your performance patterns over time.</p>
+            <p>Designed following <strong>ISSF competition formats</strong>, our scoresheets work perfectly for 10m Air Rifle, 10m Air Pistol, 50m Rifle events, and 25m Pistol disciplines.</p>
+            
+            <h3 class="text-xl font-semibold mt-8 mb-4" style="color: #F06607;">Why Paper Scoresheets Still Matter</h3>
+            <ul class="grid sm:grid-cols-2 gap-3">
+              <li class="flex items-center gap-2"><i class="fas fa-check text-xs" style="color: #F06607;"></i> Instant review without screen distractions</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-xs" style="color: #F06607;"></i> Physical archive of your journey</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-xs" style="color: #F06607;"></i> Quick pattern recognition</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-xs" style="color: #F06607;"></i> Coach-friendly format</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-xs" style="color: #F06607;"></i> No battery required at the range</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-xs" style="color: #F06607;"></i> Personal notes alongside scores</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <h2 class="text-2xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-4 max-w-3xl mx-auto">
+          <details class="glass-card rounded-xl p-5 group">
+            <summary class="font-semibold cursor-pointer flex items-center justify-between">
+              How many sheets are included?
+              <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+            </summary>
+            <p class="mt-4 opacity-80 text-sm leading-relaxed">Each scoresheet pack contains multiple sheets designed to track several training sessions or competition days.</p>
+          </details>
+          <details class="glass-card rounded-xl p-5 group">
+            <summary class="font-semibold cursor-pointer flex items-center justify-between">
+              Are these suitable for ISSF events?
+              <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+            </summary>
+            <p class="mt-4 opacity-80 text-sm leading-relaxed">Yes! Our scoresheets follow ISSF competition formats and are suitable for 10m Air Rifle, 10m Air Pistol, 50m Rifle, and 25m Pistol events.</p>
+          </details>
+          <details class="glass-card rounded-xl p-5 group">
+            <summary class="font-semibold cursor-pointer flex items-center justify-between">
+              Can coaches use these for multiple athletes?
+              <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+            </summary>
+            <p class="mt-4 opacity-80 text-sm leading-relaxed">Absolutely! Our scoresheets are perfect for academies and coaches tracking multiple shooters with organized layouts.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Related Products -->
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <h2 class="text-2xl font-bold mb-8 text-center">Complete Your Training Kit</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <a href="./planners.html" class="glass-card rounded-xl p-6 hover:scale-[1.02] transition-transform">
+            <div class="w-16 h-16 rounded-xl glass-light flex items-center justify-center mb-4">
+              <i class="fas fa-book text-2xl" style="color: #F06607;"></i>
+            </div>
+            <h3 class="font-bold mb-2">Planners</h3>
+            <p class="text-sm opacity-70 mb-3">12-month training planner for competitive shooters.</p>
+            <span class="text-sm font-semibold" style="color: #F06607;">From ₹999 →</span>
+          </a>
+          <a href="./stickers.html" class="glass-card rounded-xl p-6 hover:scale-[1.02] transition-transform">
+            <div class="w-16 h-16 rounded-xl glass-light flex items-center justify-center mb-4">
+              <i class="fas fa-star text-2xl" style="color: #F06607;"></i>
+            </div>
+            <h3 class="font-bold mb-2">Stickers</h3>
+            <p class="text-sm opacity-70 mb-3">Motivational decals for your gear and equipment.</p>
+            <span class="text-sm font-semibold" style="color: #F06607;">From ₹199 →</span>
+          </a>
+          <a href="./accessories.html" class="glass-card rounded-xl p-6 hover:scale-[1.02] transition-transform">
+            <div class="w-16 h-16 rounded-xl glass-light flex items-center justify-center mb-4">
+              <i class="fas fa-calendar-alt text-2xl" style="color: #F06607;"></i>
+            </div>
+            <h3 class="font-bold mb-2">Accessories</h3>
+            <p class="text-sm opacity-70 mb-3">Bookmarks, calendars, and training tools.</p>
+            <span class="text-sm font-semibold" style="color: #F06607;">From ₹99 →</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="glass-card fixed top-0 right-0 w-full sm:w-80 h-full shadow-2xl transform translate-x-full transition-transform duration-200 z-50 overflow-y-auto">
+      <div class="p-4">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-bold">Your Cart</h3>
+          <button onclick="toggleCart()" class="text-xl hover:opacity-70"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="cart-items" class="space-y-3 mb-4"></div>
+        <div class="border-t pt-4" style="border-color: rgba(240, 102, 7, 0.2);">
+          <div class="flex justify-between items-center mb-4">
+            <span class="font-bold">Total:</span>
+            <span id="cart-total" class="text-xl font-bold">₹0</span>
+          </div>
+          <button onclick="checkout()" class="w-full btn-primary py-3 rounded-lg font-bold text-sm">
+            <i class="fas fa-lock mr-2"></i>Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="glass-card w-full py-8 border-t" style="border-color: rgba(240, 102, 7, 0.2);">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+       <!-- Navigation Links -->
+       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-6 text-center">
+        <a href="../index.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Home</a>
+        <a href="../shop.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Shop</a>
+        <a href="planners.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Planners</a>
+        <a href="scoresheets.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Scoresheets</a>
+        <a href="stickers.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Stickers</a>
+        <a href="accessories.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Accessories</a>
+        <a href="../contact.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Contact</a>
+       </div>
+
+       <!-- Fun Message -->
+       <div class="text-center mb-6">
+        <p class="text-orange-400 font-semibold text-lg mb-2">Keep Calm and Shoot Straight!</p>
+        <p class="text-white text-sm italic opacity-70">Because life's too short for bad aim</p>
+       </div>
+
+       <!-- Copyright & Trust Badges -->
+       <div class="border-t pt-4" style="border-color: rgba(240, 102, 7, 0.2);">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+         <p class="text-white text-sm opacity-70">© 2025 Shooters of India. Precision in every pixel.</p>
+         <div class="flex items-center space-x-6 text-xs opacity-60">
+          <div class="flex items-center gap-1">
+           <i class="fas fa-lock text-green-400"></i>
+           <span class="text-white">Secure Shopping</span>
+          </div>
+          <div class="flex items-center gap-1">
+           <i class="fas fa-certificate text-yellow-400"></i>
+           <span class="text-white">Certified Authentic</span>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script>
+    function switchMainImage(src) {
+      document.getElementById('main-product-image').src = src;
+      document.querySelectorAll('.thumb-btn').forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof loadCart === 'function') loadCart();
+      if (typeof onConfigChange === 'function') onConfigChange(defaultConfig);
+
+      // Hide current page link from footer navigation
+      const currentPath = window.location.pathname;
+      const footerLinks = document.querySelectorAll('#footer a');
+
+      footerLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === 'scoresheets.html') {
+          if (currentPath.endsWith('/scoresheets.html')) {
+            link.style.display = 'none';
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

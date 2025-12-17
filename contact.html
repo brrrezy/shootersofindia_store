@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Contact Shooters of India | Get In Touch</title>
+  <meta name="description" content="Contact Shooters of India for questions about shooting planners, scoresheets, stickers, and accessories. Based in India, supporting competitive shooters.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://shootersofindia.vercel.app/contact.html">
+  
+  <link rel="icon" type="image/png" href="assets/images/soi_favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/soi_favicon.png">
+  
+  <script src="/_sdk/element_sdk.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="/_sdk/data_sdk.js" type="text/javascript" defer></script>
+</head>
+<body class="h-full">
+  <div id="app" class="w-full h-full overflow-auto">
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="glass-navbar w-full sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="index.html" class="cursor-pointer hover:opacity-90 transition-opacity" aria-label="Go to Home page">
+            <div id="logo" class="w-32 h-9 rounded-lg overflow-hidden shadow-lg">
+              <img src="assets/images/soi_logo.png" alt="Shooters of India Logo" class="w-full h-full object-cover">
+            </div>
+          </a>
+          <div class="flex items-center gap-2 md:gap-4">
+            <a href="index.html" class="hidden md:inline-flex nav-link hover:opacity-80 transition-opacity font-medium text-xs" aria-label="Go to Home page">Home</a>
+            <a href="shop.html" class="hidden md:inline-flex nav-link hover:opacity-80 transition-opacity font-medium text-xs" aria-label="Go to Shop page">Shop</a>
+            <a href="contact.html" class="hidden md:inline-flex nav-link hover:opacity-80 transition-opacity font-medium text-xs" aria-label="Go to Contact page" style="color: #F06607;">Contact</a>
+            <button onclick="toggleCart()" class="relative btn-primary px-4 py-2 rounded-lg font-medium text-xs" aria-label="Toggle shopping cart">
+              <i class="fas fa-shopping-cart mr-1"></i>
+              Cart
+              <span id="cart-count" class="cart-badge absolute -top-1 -right-1 w-5 h-5 rounded-full text-[11px] flex items-center justify-center font-bold" aria-label="Items in cart">0</span>
+            </button>
+            <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center md:hidden ml-1 p-2 rounded-lg hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent focus-visible:ring-orange-400" aria-label="Toggle navigation menu">
+              <span class="sr-only">Open main menu</span>
+              <i class="fas fa-bars text-sm"></i>
+            </button>
+          </div>
+        </div>
+        <div id="mobile-nav" class="md:hidden pb-3 space-y-2 hidden">
+          <div class="flex flex-col gap-2 pt-2">
+            <a href="index.html" class="nav-link text-left w-full px-3 py-2 rounded-lg hover:bg-white/5 font-medium text-sm">Home</a>
+            <a href="shop.html" class="nav-link text-left w-full px-3 py-2 rounded-lg hover:bg-white/5 font-medium text-sm">Shop</a>
+            <a href="contact.html" class="nav-link text-left w-full px-3 py-2 rounded-lg hover:bg-white/5 font-medium text-sm">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="w-full">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div id="contact-container" class="glass-card rounded-2xl p-8 shadow-xl">
+          <h1 id="contact-heading" class="text-3xl font-bold mb-3 text-center">Get In Touch</h1>
+          <p id="contact-description" class="text-center text-base mb-8 opacity-70">We'd love to hear from you. Send us a message!</p>
+          
+          <form id="contact-form" class="space-y-4 mb-8">
+            <div>
+              <label for="name" class="block text-sm font-medium mb-1">Your Name</label>
+              <input type="text" id="name" name="name" required class="w-full px-3 py-2 rounded-lg border glass-light focus:outline-none transition-all">
+            </div>
+            <div>
+              <label for="email-input" class="block text-sm font-medium mb-1">Email Address</label>
+              <input type="email" id="email-input" name="email" required class="w-full px-3 py-2 rounded-lg border glass-light focus:outline-none transition-all">
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium mb-1">Message</label>
+              <textarea id="message" name="message" rows="4" required class="w-full px-3 py-2 rounded-lg border glass-light focus:outline-none transition-all resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full btn-primary py-3 rounded-lg font-bold text-sm">
+              <i class="fas fa-paper-plane mr-2"></i>Send Message
+            </button>
+            <p class="text-center text-sm opacity-70 mt-4">Prefer direct email? Reach out at <a href="mailto:shootersofindia@gmail.com" class="font-medium underline hover:opacity-100" style="color: #F06607;">shootersofindia@gmail.com</a></p>
+          </form>
+
+          <!-- Social Links -->
+          <div class="border-t pt-6" style="border-color: rgba(240, 102, 7, 0.2);">
+            <h3 class="text-xl font-bold mb-6 text-center">Connect With Us</h3>
+            <div class="flex justify-center space-x-8 flex-wrap gap-4">
+              <a href="https://www.instagram.com/_shootersofindia_/" target="_blank" rel="noopener noreferrer" id="instagram-link" class="flex flex-col items-center group">
+                <div id="social-instagram-bg" class="w-12 h-12 rounded-full flex items-center justify-center mb-2 transition-transform group-hover:scale-110 glass-light">
+                  <i class="fab fa-instagram text-xl"></i>
+                </div>
+                <span id="instagram-text" class="text-xs font-medium opacity-80"> </span>
+              </a>
+              <a href="https://youtube.com/@shootersofindia" target="_blank" rel="noopener noreferrer" id="youtube-link" class="flex flex-col items-center group">
+                <div id="social-youtube-bg" class="w-12 h-12 rounded-full flex items-center justify-center mb-2 transition-transform group-hover:scale-110 glass-light">
+                  <i class="fab fa-youtube text-xl"></i>
+                </div>
+                <span id="youtube-text" class="text-xs font-medium opacity-80"> </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- CART SIDEBAR -->
+    <div id="cart-sidebar" class="glass-card fixed top-0 right-0 w-full sm:w-80 h-full shadow-2xl transform translate-x-full transition-transform duration-200 z-50 overflow-y-auto">
+      <div class="p-4">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-bold">Your Cart</h3>
+          <button onclick="toggleCart()" class="text-xl hover:opacity-70 transition-opacity">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div id="cart-items" class="space-y-3 mb-4">
+          <!-- Cart items will be rendered here -->
+        </div>
+        <div class="border-t pt-4" style="border-color: rgba(240, 102, 7, 0.2);">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-base font-bold">Total:</span>
+            <span id="cart-total" class="text-xl font-bold">₹0</span>
+          </div>
+          <button onclick="checkout()" class="w-full btn-primary py-3 rounded-lg font-bold text-sm">
+            <i class="fas fa-lock mr-2"></i>Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="glass-card w-full py-8 border-t" style="border-color: rgba(240, 102, 7, 0.2);">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+       <!-- Navigation Links -->
+       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-6 text-center">
+        <a href="index.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Home</a>
+        <a href="shop.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Shop</a>
+        <a href="shop/planners.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Planners</a>
+        <a href="shop/scoresheets.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Scoresheets</a>
+        <a href="shop/stickers.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Stickers</a>
+        <a href="shop/accessories.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Accessories</a>
+        <a href="contact.html" class="text-white hover:text-orange-400 transition-colors text-sm font-medium opacity-70 hover:opacity-100">Contact</a>
+       </div>
+
+       <!-- Fun Message -->
+       <div class="text-center mb-6">
+        <p class="text-orange-400 font-semibold text-lg mb-2">Keep Calm and Shoot Straight!</p>
+        <p class="text-white text-sm italic opacity-70">Because life's too short for bad aim</p>
+       </div>
+
+       <!-- Copyright & Trust Badges -->
+       <div class="border-t pt-4" style="border-color: rgba(240, 102, 7, 0.2);">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+         <p class="text-white text-sm opacity-70">© 2025 Shooters of India. Precision in every pixel.</p>
+         <div class="flex items-center space-x-6 text-xs opacity-60">
+          <div class="flex items-center gap-1">
+           <i class="fas fa-lock text-green-400"></i>
+           <span class="text-white">Secure Shopping</span>
+          </div>
+          <div class="flex items-center gap-1">
+           <i class="fas fa-certificate text-yellow-400"></i>
+           <span class="text-white">Certified Authentic</span>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+    </footer>
+  </div>
+  <script src="assets/js/script.js"></script>
+  <script>
+    // Initialize contact page on load
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof loadCart === 'function') {
+        loadCart();
+      }
+      if (typeof onConfigChange === 'function' && window.elementSdk) {
+        const config = window.elementSdk?.config || defaultConfig;
+        onConfigChange(config);
+      }
+    });
+
+    // Hide current page link from footer navigation
+    const currentPath = window.location.pathname;
+    const footerLinks = document.querySelectorAll('#footer a');
+
+    footerLinks.forEach(link => {
+      const linkHref = link.getAttribute('href');
+      if (linkHref === 'contact.html') {
+        if (currentPath.endsWith('/contact.html')) {
+          link.style.display = 'none';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

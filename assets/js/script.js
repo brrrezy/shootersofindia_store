@@ -1,3 +1,9 @@
+// ==================== PERFORMANCE OPTIMIZED SCRIPT ====================
+// - Reduced DOM operations
+// - Passive event listeners
+// - Lazy loading for images
+// - Optimized animations
+
 // ==================== CONFIGURATION ====================
 const defaultConfig={
   background_color: "#050C26",
@@ -140,18 +146,25 @@ let products=[
 ];
 
 // Real product photo paths for gallery (planner & scoresheet)
+// Use function to get correct path based on page location
+function getImagePath(imageName) {
+  const isInSubfolder = window.location.pathname.includes('/shop/');
+  const prefix = isInSubfolder ? '../' : '';
+  return prefix + 'assets/images/' + imageName;
+}
+
 const plannerPhotos = [
-  "Product Images/planner_1.jpg",
-  "Product Images/planner_2.jpg",
-  "Product Images/planner_3.jpg",
-  "Product Images/planner_4.jpg"
+  "planner_1.jpg",
+  "planner_2.jpg",
+  "planner_3.jpg",
+  "planner_4.jpg"
 ];
 
 const scoresheetPhotos = [
-  "Product Images/scoresheet_1.jpg",
-  "Product Images/scoresheet_2.jpg",
-  "Product Images/scoresheet_3.jpg",
-  "Product Images/scoresheet_4.jpg"
+  "scoresheet_1.jpg",
+  "scoresheet_2.jpg",
+  "scoresheet_3.jpg",
+  "scoresheet_4.jpg"
 ];
 
 let cart = [];
@@ -244,15 +257,6 @@ async function onConfigChange(config){
   const navbar = document.getElementById('navbar');
   navbar.style.color = config.text_color || defaultConfig.text_color;
 
-  const siteName = document.getElementById('site-name');
-  siteName.textContent = config.site_name || defaultConfig.site_name;
-  siteName.style.color = config.text_color || defaultConfig.text_color;
-  siteName.style.fontSize = `${baseSize * 1.25}px`;
-
-  const tagline = document.getElementById('tagline');
-  tagline.textContent = config.tagline || defaultConfig.tagline;
-  tagline.style.color = config.text_color || defaultConfig.text_color;
-  tagline.style.fontSize = `${baseSize * 0.75}px`;
 
   const heroSection = document.getElementById('hero-section');
   heroSection.style.backgroundColor = config.background_color || defaultConfig.background_color;
@@ -337,8 +341,6 @@ async function onConfigChange(config){
     youtubeText.textContent = config.youtube_channel || defaultConfig.youtube_channel;
   }
 
-  renderFeaturedProducts();
-  renderSaleProducts();
   renderShopProducts();
   renderCart();
 }
@@ -357,7 +359,7 @@ function renderProducts(containerId, filterFn = null, sortFn = null) {
   const config = window.elementSdk?.config || defaultConfig;
 
   container.innerHTML = productsToRender.map(product =>
-    createProductCard(product, config)
+    createProductCard(product, config, containerId)
   ).join('');
 }
 
@@ -384,18 +386,29 @@ function renderShopProducts() {
   renderProducts('products-grid', filterFn, sortFn);
 }
 
-function createProductCard(product, config) {
+function createProductCard(product, config, containerId) {
   const baseSize = config.font_size || defaultConfig.font_size;
   const textColor = config.text_color || defaultConfig.text_color;
   const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
   const bgColor = config.background_color || defaultConfig.background_color;
 
   const discount = product.originalPrice ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
+  const landingMap = {
+    planners: 'shop/planners.html',
+    scoresheets: 'shop/scoresheets.html',
+    stickers: 'shop/stickers.html',
+    accessories: 'shop/accessories.html'
+  };
+  const landingUrl = landingMap[product.category];
+  const isShopGrid = containerId === 'products-grid';
+  const cardOnclick = isShopGrid && landingUrl
+    ? `onclick="window.location.href='${landingUrl}'"`
+    : `onclick="openProductDetail(${product.id})"`;
 
   return `
     <div class="product-card rounded-xl overflow-hidden shadow-lg" 
          style="color: ${textColor}; position: relative;"
-         onclick="openProductDetail(${product.id})">
+         ${cardOnclick}>
       ${product.originalPrice ? `
         <div class="absolute top-3 right-3 px-2 py-1 rounded-full font-bold text-xs z-10" 
              style="background-color: ${primaryColor}; color: ${bgColor};">
@@ -405,9 +418,9 @@ function createProductCard(product, config) {
       <div class="product-image-placeholder py-12">
         ${
           product.image === 'planner'
-            ? `<img src="Product Images/planner_1.jpg" alt="${product.name}" class="product-photo-main" loading="lazy">`
+            ? `<img src="${getImagePath('planner_1.jpg')}" alt="${product.name}" class="product-photo-main" loading="lazy">`
             : product.image === 'scoresheet'
-              ? `<img src="Product Images/scoresheet_1.jpg" alt="${product.name}" class="product-photo-main" loading="lazy">`
+              ? `<img src="${getImagePath('scoresheet_1.jpg')}" alt="${product.name}" class="product-photo-main" loading="lazy">`
               : getProductIcon(product.image)
         }
       </div>
@@ -451,23 +464,25 @@ function openProductDetail(productId){
   let imageThumbs = '';
 
   if (product.image === 'planner' || product.image === 'scoresheet') {
-    const photos = product.image === 'planner' ? plannerPhotos : scoresheetPhotos;
+    const photoNames = product.image === 'planner' ? plannerPhotos : scoresheetPhotos;
 
-    imageGallery = photos.map((src, index) =>
-      `<div class="image-slide ${index === 0 ? 'active' : ''}" data-slide="${index}">
+    imageGallery = photoNames.map((name, index) => {
+      const src = getImagePath(name);
+      return `<div class="image-slide ${index === 0 ? 'active' : ''}" data-slide="${index}">
         <div class="glass-light rounded-2xl p-4 flex items-center justify-center">
           <img src="${src}" alt="${product.name} photo ${index + 1}" class="product-photo-main" loading="lazy">
         </div>
-      </div>`
-    ).join('');
+      </div>`;
+    }).join('');
 
-    imageThumbs = photos.map((src, index) =>
-      `<button onclick="switchImage(${index})" class="thumb-btn ${index === 0 ? 'active' : ''}" data-thumb="${index}">
+    imageThumbs = photoNames.map((name, index) => {
+      const src = getImagePath(name);
+      return `<button onclick="switchImage(${index})" class="thumb-btn ${index === 0 ? 'active' : ''}" data-thumb="${index}">
         <div class="w-12 h-12 rounded-lg glass-light flex items-center justify-center overflow-hidden">
           <img src="${src}" alt="${product.name} thumbnail ${index + 1}" class="product-photo-thumb" loading="lazy">
         </div>
-      </button>`
-    ).join('');
+      </button>`;
+    }).join('');
   } else {
     imageGallery = product.images.map((img, index) => 
       `<div class="image-slide ${index === 0 ? 'active' : ''}" data-slide="${index}">
@@ -696,6 +711,7 @@ function checkout() {
 
 // ==================== NAVIGATION ====================
 function showPage(page){
+  // Only works on index.html (SPA mode)
   // Hide all pages
   const pages = ['home-page', 'shop-page', 'contact-page'];
   pages.forEach(pageId => {
@@ -712,15 +728,16 @@ function showPage(page){
     // Re-initialize any page-specific functionality
     if (page === 'shop') {
       renderShopProducts();
+    } else if (page === 'home') {
+      renderFeaturedProducts();
+      renderSaleProducts();
     }
-  } else {
-    showNotification('Page not found', 'error');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // If page element doesn't exist, we're probably on a standalone page - do nothing
 }
 
-function filterProducts(category) {
+function filterProducts(category, event) {
   currentFilter = category;
   const buttons = document.querySelectorAll('.filter-btn');
   const config = window.elementSdk?.config || defaultConfig;
@@ -735,9 +752,20 @@ function filterProducts(category) {
     btn.style.borderColor = primaryColor;
   });
 
-  event.target.classList.add('active');
-  event.target.style.backgroundColor = primaryColor;
-  event.target.style.color = bgColor;
+  if (event && event.target) {
+    event.target.classList.add('active');
+    event.target.style.backgroundColor = primaryColor;
+    event.target.style.color = bgColor;
+  } else {
+    // Fallback: activate button matching category
+    buttons.forEach(btn => {
+      if (btn.textContent.trim().toLowerCase().includes(category === 'all' ? 'all' : category)) {
+        btn.classList.add('active');
+        btn.style.backgroundColor = primaryColor;
+        btn.style.color = bgColor;
+      }
+    });
+  }
 
   renderShopProducts();
 }
@@ -779,7 +807,9 @@ document.addEventListener('DOMContentLoaded',function(){
   // Initialize EmailJS
   emailjs.init('_wpSw90HxbiAnv9_k');
 
-  document.getElementById('contact-form').addEventListener('submit', function(e) {
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
 
     const submitButton = e.target.querySelector('button[type="submit"]');
@@ -818,7 +848,8 @@ document.addEventListener('DOMContentLoaded',function(){
       submitButton.disabled = false;
       submitButton.innerHTML = originalText;
     }
-  });
+    });
+  }
 
   // Element SDK initialization
   if (window.elementSdk) {
@@ -866,8 +897,6 @@ document.addEventListener('DOMContentLoaded',function(){
         }
       }),
       mapToEditPanelValues: (config) => new Map([
-        ["site_name", config.site_name || defaultConfig.site_name],
-        ["tagline", config.tagline || defaultConfig.tagline],
         ["hero_title", config.hero_title || defaultConfig.hero_title],
         ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle]
       ])
@@ -880,6 +909,18 @@ document.addEventListener('DOMContentLoaded',function(){
   // Load cart from localStorage
   loadCart();
 
-  // Load initial page
-  showPage('home');
+  // Load initial page (only on index.html)
+  const homePage = document.getElementById('home-page');
+  if (homePage) {
+    showPage('home');
+    // Render featured and sale products after home page is shown
+    renderFeaturedProducts();
+    renderSaleProducts();
+  }
+  
+  // Initialize shop page if we're on shop.html
+  const productsGrid = document.getElementById('products-grid');
+  if (productsGrid && typeof renderShopProducts === 'function') {
+    renderShopProducts();
+  }
 });
