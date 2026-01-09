@@ -29,24 +29,25 @@ const defaultConfig={
 // ==================== DATA ====================
 // Real product catalogue for Shooters of India
 let products=[
-  { 
-    id: 1, 
-    name: "Shooting Premium Planner", 
-    category: "planners", 
-    price: 999, 
-    originalPrice: 1499, 
+  {
+    id: 1,
+    name: "Shooting Premium Planner",
+    category: "planners",
+    price: 999,
+    originalPrice: 1499,
     image: "planner",
     images: ["planner", "planner-alt1", "planner-alt2", "planner-alt3"],
-    description: "Daily planner crafted for competitive shooters and athletes.", 
-    details: "Designed specifically for shooters, this 12‑month planner helps you set clear season goals, structure training blocks, and review every match with intention. Premium paper and a durable cover make it perfect for daily range and home use.",
+    description: "A signature shooting planner conceived as a personal instrument of discipline, designed to capture preparation, precision, and progress in its purest form.",
+    details: "In competitive shooting sports, success comes from consistent training, mental preparation, and detailed performance tracking. Our Shooting Premium Planner is the ultimate tool for serious shooters who want to elevate their game. Whether you're training for the National Shooting Championship, preparing for ISSF World Cup qualifications, or working towards Olympic selection trials, having a structured training plan is essential.",
     specs: [
-      "12‑month training layout",
-      "Goal setting & reflection pages",
-      "Competition planning sections",
-      "Premium paper & durable binding",
-      "Space for mindset & notes"
+      "Professional Score Sheets",
+      "Gratitude & Mindset Section",
+      "Shot Analysis / Technical Section",
+      "Hydration, Mood & Energy Tracking",
+      "Coach's Feedback Section",
+      "Structured Daily & Session Logs"
     ],
-    featured: true 
+    featured: true
   },
   { 
     id: 2, 
