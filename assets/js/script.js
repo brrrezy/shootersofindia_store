@@ -1,8 +1,81 @@
+// ==================== GOOGLE ANALYTICS INTEGRATION ====================
+// GA4 Measurement ID: G-CCNJ3F6M1G
+// Events tracked:
+// - Product views (view_item)
+// - Add to cart (add_to_cart)
+// - Checkout initiation (begin_checkout)
+// - Contact form submissions (contact_form_submit)
+
 // ==================== PERFORMANCE OPTIMIZED SCRIPT ====================
 // - Reduced DOM operations
 // - Passive event listeners
 // - Lazy loading for images
 // - Optimized animations
+
+// ==================== GOOGLE ANALYTICS ====================
+// Initialize GA4 tracking
+function initializeAnalytics() {
+  // GA4 is loaded via script tag in HTML
+  // Custom events for e-commerce tracking
+  gtag('config', 'G-CCNJ3F6M1G', {
+    'custom_map': {'dimension1': 'page_type'}
+  });
+}
+
+// Track product views
+function trackProductView(productId) {
+  const product = products.find(p => p.id === productId);
+  if (product && typeof gtag !== 'undefined') {
+    gtag('event', 'view_item', {
+      currency: 'INR',
+      value: product.price,
+      items: [{
+        item_id: product.id.toString(),
+        item_name: product.name,
+        category: product.category,
+        price: product.price
+      }]
+    });
+  }
+}
+
+// Track add to cart events
+function trackAddToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  if (product && typeof gtag !== 'undefined') {
+    gtag('event', 'add_to_cart', {
+      currency: 'INR',
+      value: product.price,
+      items: [{
+        item_id: product.id.toString(),
+        item_name: product.name,
+        category: product.category,
+        price: product.price,
+        quantity: 1
+      }]
+    });
+  }
+}
+
+// Track purchases (when user completes checkout)
+function trackPurchase(cartItems, total) {
+  if (typeof gtag !== 'undefined') {
+    const items = cartItems.map(item => ({
+      item_id: item.id.toString(),
+      item_name: item.name,
+      category: item.category,
+      price: item.price,
+      quantity: item.quantity
+    }));
+
+    gtag('event', 'purchase', {
+      transaction_id: Date.now().toString(),
+      currency: 'INR',
+      value: total,
+      items: items
+    });
+  }
+}
 
 // ==================== CONFIGURATION ====================
 const defaultConfig={
@@ -454,6 +527,9 @@ function openProductDetail(productId){
   const product = products.find(p => p.id === productId);
   if (!product) return;
 
+  // Track product view
+  trackProductView(productId);
+
   const config = window.elementSdk?.config || defaultConfig;
   const textColor = config.text_color || defaultConfig.text_color;
   const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
@@ -606,6 +682,8 @@ function addToCart(productId) {
     cartItem.quantity++;
   } else {
     cart.push({ ...product, quantity: 1 });
+    // Track add to cart for new items
+    trackAddToCart(productId);
   }
 
   updateCartCount();
@@ -706,6 +784,21 @@ function checkout() {
     return;
   }
 
+  // Track checkout initiation
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'begin_checkout', {
+      currency: 'INR',
+      value: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+      items: cart.map(item => ({
+        item_id: item.id.toString(),
+        item_name: item.name,
+        category: item.category,
+        price: item.price,
+        quantity: item.quantity
+      }))
+    });
+  }
+
   // Redirect to checkout page
   window.location.href = '/checkout.html';
 }
@@ -804,6 +897,9 @@ function showNotification(message,type){
 }
 
 // ==================== FORM HANDLING ====================
+// Initialize Google Analytics
+initializeAnalytics();
+
 document.addEventListener('DOMContentLoaded',function(){
   // Initialize EmailJS
   emailjs.init('_wpSw90HxbiAnv9_k');
@@ -811,6 +907,13 @@ document.addEventListener('DOMContentLoaded',function(){
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
+      // Track contact form submission
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'contact_form_submit', {
+          event_category: 'engagement',
+          event_label: 'contact_form'
+        });
+      }
     e.preventDefault();
 
     const submitButton = e.target.querySelector('button[type="submit"]');
